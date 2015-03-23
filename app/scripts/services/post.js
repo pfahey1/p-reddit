@@ -18,7 +18,10 @@ app.factory('Post', function ($firebase, FIREBASE_URL) {
 			    },
 			    delete: function (post) {
 			      return posts.$remove(post);
-			    }
+			    },
+			    comments: function (postId) {
+			    	  return $firebase(ref.child('comments').child(postId)).$asArray();
+			    	}
 			  };
 
 			  return Post;
